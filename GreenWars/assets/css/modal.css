@@ -24,8 +24,9 @@
     background-color: #47778c;
     margin: 5px auto; /* 15% from the top and centered */
     border: 1px solid #888;
-    width: 60%; /* Could be more or less, depending on screen size */
+    width: 35%; /* Could be more or less, depending on screen size */
 	padding: 40px 40px 40px 40px;
+	border-radius: 2px;
 }
 
 /* The Close Button */

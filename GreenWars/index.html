@@ -45,11 +45,12 @@
 				<div id="modal" class="modal">
 					<span id="closeModal" class="close" title="Close Modal">&times;</span>
 					<!-- Modal Content -->
-					<form class="modal-content animate" action="#">
+					<form class="modal-content animate" action="" onsubmit="return false">
 						<div id="modelForm" class="row uniform 50%">
-							<div class="8u 12u$(xsmall)"><input type="text" placeholder="Mail" name="uname" required></div>
-							<div class="8u 12u$(xsmall)"><input type="password" placeholder="Password" name="psw" required></div>
-							<div class="4u$ 12u$(xsmall)"><input type="submit" value="Login" class="fit special"></div>
+							<div class="8u 12u$(xsmall)"><input type="text" placeholder="Mail/Login" id="loginL" required></div>
+							<div class="8u 12u$(xsmall)"><input type="password" placeholder="Password" id="pwdL" required></div>
+							<div class="4u$ 12u$(xsmall)"><input type="submit" value="Login" class="fit special" onclick="login()"></div>
+							<label id="MsgModal"></label>
 						</div>
 					</form>
 				</div>
@@ -146,6 +147,7 @@
 		</div>
 
 		<!-- Scripts -->
+			<script src="assets/js/sha256.min.js"></script>
 			<script src="assets/js/functions.js"></script>
 			<script src="assets/js/jquery.min.js"></script>
 			<script src="assets/js/jquery.scrolly.min.js"></script>
