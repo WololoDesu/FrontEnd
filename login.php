@@ -7,7 +7,7 @@
 				string password_hash($_POST["password"], PASSWORD_DEFAULT)
 		*/
 		
-		define('LOGIN','admin');
+		define('LOGIN','admin'); 		// vieux Hardcodage a retirer
 		define('PASSWORD','mdp');
 		if(isset($_POST['bLogin'])){
 			$_SESSION['auth']=($_POST['login']==LOGIN && $_POST['password']==PASSWORD); // Remplacer par un appel de validation par l'API
