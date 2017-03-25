@@ -12,6 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
 		<link rel="stylesheet" href="assets/css/main.css" />
+		<link rel="stylesheet" href="assets/css/modal.css" />
 		<link id="customTheme" rel="stylesheet" href="assets/css/pandatheme.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
@@ -24,8 +25,8 @@
 					<h1 id="logo"><a href="index.html">Green Walk</a></h1>
 					<nav id="nav">
 						<ul>
-							<li><a href="index.html">Sign In</a></li>
-							<li><a href="#five" class="button special scrolly">Sign Up</a></li>
+							<li><a id="modalSignIn" href="#four" class="scrolly">Sign In</a></li>
+							<li><a href="#four" class="button special scrolly">Sign Up</a></li>
 						</ul>
 					</nav>
 				</header>
@@ -40,6 +41,34 @@
 					<a href="#one" class="goto-next scrolly">Next</a>
 				</section>
 
+			<!-- The Modal -->
+				<div id="modal" class="modal">
+				  <span id="closeModal" class="close" title="Close Modal">&times;</span>
+
+				  <!-- Modal Content -->
+				  <form class="modal-content animate" action="/action_page.php">
+					<div class="imgcontainer">
+					  <img src="img_avatar2.png" alt="Avatar" class="avatar">
+					</div>
+
+					<div class="container">
+					  <label><b>Username</b></label>
+					  <input type="text" placeholder="Enter Username" name="uname" required>
+
+					  <label><b>Password</b></label>
+					  <input type="password" placeholder="Enter Password" name="psw" required>
+
+					  <button type="submit">Login</button>
+					  <input type="checkbox" checked="checked"> Remember me
+					</div>
+
+					<div class="container" style="background-color:#f1f1f1">
+					  <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
+					  <span class="psw">Forgot <a href="#">password?</a></span>
+					</div>
+				  </form>
+				</div>
+				
 			<!-- One -->
 				<section id="one" class="spotlight style1 bottom">
 					<span class="image fit main"><img id="bannerS1" src="images/foxbasic-banner.png" alt="" /></span>
@@ -101,7 +130,7 @@
 							<h2>Start your adventure now !</h2>
 							<p>Just fill the following inputs to sign up.</p>
 						</header>
-						<form method="post" action="#" class="container 50%">
+						<form method="post" action="#" class="container 50%" onsubmit="return register(this)">
 							<div class="row uniform 50%">
 								<div class="8u 12u$(xsmall)"><input type="text" name="firstname"placeholder="First Name" /></div>
 								<div class="8u 12u$(xsmall)"><input type="text" name="lastname" placeholder="Last Name" /></div>
