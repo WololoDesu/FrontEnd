@@ -100,6 +100,6 @@ function login(){
 		}
     };
 	// send a request
-    xhttp.open("POST", "http://192.168.180.129/GreenWalk/login", true); // true : asynchronous request
+    xhttp.open("POST", "http://localhost/GreenWalk/API/login", true); // true : asynchronous request
 	xhttp.send('{"login":"' + login + '","password":"' + pwd + '"}');
 }
