@@ -5,7 +5,7 @@
 	<body>
 		<?php
 			
-			if(isset($_POST["submit"])){
+			if(isset($_POST["send"])){
 				$accu=0;
 				//echo "SLT";
 				foreach($_POST as $key => $value){
@@ -100,8 +100,32 @@
 				<input type="radio" name="team" value="2"> #TeamBain </input>
 				<input type="radio" name="team" value="0"> #TeamCanal </input>
 			</p>
-			<input name="submit" type="submit" value="OK SLT">
+			<input name="send" type="submit" value="OK SLT">
 		</form>
+		
+		<form name="inscription" action="./inscription.php" method="POST">
+			
+				Nom : <input type="text" name="nom" required /><br/>
+				Prénom : <input type="text" name="prenom" required /> <br/>
+				Pseudo : <input type="text" name="pseudo" required /> <br/>
+				MDP : <input type="password" name="passwordFirst" required /> <br/>
+				Confirmer MDP : <input type="password" name="passwordConfirm" required /> <br/>	
+				Mail : <input type="text" name="mail" pattern="[A-Za-z]+@[A-Za-z]+.[A-Za-z]+" required > <br/>
+				<div onClick="assertSignUpFields()" style="background-color:red;"> Envoyer </div>
+				
+				<script>
+					function assertSignUpFields(){
+						
+						if(document.inscription.passwordFirst.value === document.inscription.passwordConfirm.value && document.inscription.mail.value.match("[A-Za-z]+@[A-Za-z]+.[A-Za-z]+")){
+							document.inscription.submit();
+							//alert(document.inscription.passwordFirst.value+" ;;; "+document.inscription.passwordConfirm.value)
+						}
+					}
+				</script>
+		</form>
+		
+		<?php include("INFO2/TP3/login.php"); ?>
+		
 		
 		<script>
 			function majChampsFreq(type){
