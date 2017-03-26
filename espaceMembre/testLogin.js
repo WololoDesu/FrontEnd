@@ -1,5 +1,8 @@
 function testTeam() {
-
+	var team = sessionStorage.getItem('teamUser');
+	if(team==null){
+		window.location.replace("chooseTeam.html");
+	}
 }
 
 function testLogin() {
@@ -39,6 +42,7 @@ function testLogin() {
                 document.getElementById("imgUser").src = "../images/tigerwinner.png";
                 break;
         }
+		testTeam();
     } else {
         window.location.replace("../index.html");
     }
