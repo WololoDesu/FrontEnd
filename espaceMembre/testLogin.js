@@ -49,7 +49,7 @@ function testLogin() {
     }
 }
 
-function logout(){
+document.getElementById("logout").onclick = function(){
 	sessionStorage.clear();
 	window.location.replace("../index.html");
 }
