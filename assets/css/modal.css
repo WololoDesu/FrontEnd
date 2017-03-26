@@ -19,6 +19,16 @@
     padding-top: 60px;
 }
 
+#loginLogo {
+    height: 30%;
+    width: 30%;
+}
+
+#loginBtn {
+    position: relative;
+    left: 400px;
+}
+
 /* Modal Content/Box */
 .modal-content {
     background-color: #47778c;
