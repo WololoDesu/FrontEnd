@@ -73,8 +73,32 @@ window.onclick = function(event) {
 
 // Sign up
 function register(form){
-	
-	return false;
+	var firstname = document.getElementById("firstnameS").value;
+	var lastname = document.getElementById("lastnameS").value;
+	var email = document.getElementById("emailS").value;
+	var login = document.getElementById("loginS").value;
+	var pwd = sha256.hex(document.getElementById("pwdS").value);
+	// create a request for the server
+	var xhttp = new XMLHttpRequest();
+	// prepare the receive
+    xhttp.onreadystatechange = function(){
+        if(this.readyState==4 && this.status==200){
+			// transform JSON to javascript array
+            var response = JSON.parse(this.responseText);
+			if(response[0].status=="ERROR"){
+				message.innerHTML += "Erreur : "
+				for(var i in response[0].messages){
+					message.innerHTML += response[0].messages + " ";
+				}
+			}else{
+				sessionStorage.setItem('idUser', response[0].id);
+				window.location.replace("starter.html");
+			}
+		}
+    };
+	// send a request
+    xhttp.open("POST", "http://localhost/GreenWalk/API/users", true); // true : asynchronous request
+	xhttp.send('{"nom":"' + lastname + '","prenom":"' + firstname + '","pseudo":"' + login + '","mail":"' + email + '","password":"' + pwd + '"}');
 }
 
 // Log in
@@ -85,16 +109,14 @@ function login(){
 	// create a request for the server
 	var xhttp = new XMLHttpRequest();
 	// prepare the receive
-    xhttp.onreadystatechange = function callback(aEvt){
-		alert(this.status + " " + this.readyState);
+    xhttp.onreadystatechange = function(){
         if(this.readyState==4 && this.status==200){
 			// transform JSON to javascript array
             var response = JSON.parse(this.responseText);
-			alert(response[0].status);
 			if(response[0].status==false){
-				message.innerHTML=response[0].reason;
+				message.innerHTML = response[0].reason;
 			}else{
-				message.innerHTML="</p>logged in, welcome !</p>";
+				sessionStorage.setItem('idUser', response[0].id);
 				window.location.replace("starter.html");
 			}
 		}

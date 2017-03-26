@@ -116,14 +116,14 @@
 							<h2>Start your adventure now !</h2>
 							<p>Just fill the following inputs to sign up.</p>
 						</header>
-						<form method="post" action="#" class="container 50%" onsubmit="return register(this)">
+						<form method="post" action="#" class="container 50%" onsubmit="return false">
 							<div class="row uniform 50%">
-								<div class="8u 12u$(xsmall)"><input type="text" name="firstname"placeholder="First Name" /></div>
-								<div class="8u 12u$(xsmall)"><input type="text" name="lastname" placeholder="Last Name" /></div>
-								<div class="8u 12u$(xsmall)"><input type="email" name="email" placeholder="Your Email Address" /></div>
-								<div class="8u 12u$(xsmall)"><input type="text" name="login" placeholder="Login" /></div>
-								<div class="8u 12u$(xsmall)"><input type="password" name="password" placeholder="Password" /></div>
-								<div class="4u$ 12u$(xsmall)"><input type="submit" value="Get Started" class="fit special" /></div>
+								<div class="8u 12u$(xsmall)"><input type="text" id="firstnameS"placeholder="First Name" /></div>
+								<div class="8u 12u$(xsmall)"><input type="text" id="lastnameS" placeholder="Last Name" /></div>
+								<div class="8u 12u$(xsmall)"><input type="email" id="emailS" placeholder="Your Email Address" /></div>
+								<div class="8u 12u$(xsmall)"><input type="text" id="loginS" placeholder="Login" /></div>
+								<div class="8u 12u$(xsmall)"><input type="password" id="pwdS" placeholder="Password" /></div>
+								<div class="4u$ 12u$(xsmall)"><input type="submit" value="Get Started" class="fit special" onclick="register()" /></div>
 							</div>
 						</form>
 					</div>
