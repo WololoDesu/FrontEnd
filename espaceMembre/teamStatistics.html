@@ -57,6 +57,7 @@
                         <li><a href="#"><i class="fa fa-circle-o"></i>All achivements</a></li>
                     </ul>
                 </li>
+                <li><a id ='logout' href="#"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -257,8 +258,8 @@
         // Get context with jQuery - using jQuery's .get() method.
         var pieChartCanvas = $("#pieChart").get(0).getContext("2d");
         var pieChart = new Chart(pieChartCanvas);
-		
-		var scores = [];
+    
+    var scores = [];
         var pieOptions = {
             //Boolean - Whether we should show a stroke on each segment
             segmentShowStroke: true,
@@ -288,11 +289,11 @@
         // prepare the receive
         xhttp.onreadystatechange = function () {
             if (this.readyState == 4 && this.status == 200) {
-				// transform JSON to javascript array
-				var response = JSON.parse(this.responseText);
-				for(var i in response) {
-					scores.push(response[i].score);
-				}
+        // transform JSON to javascript array
+        var response = JSON.parse(this.responseText);
+        for(var i in response) {
+          scores.push(response[i].score);
+        }
                 var PieData = [
                     {
                         value: scores[3],
