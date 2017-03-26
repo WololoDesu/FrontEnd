@@ -40,8 +40,7 @@ loadTheme();
 // Change the winner
 function setWinner(vainqueur) { // A redéfinir
     localStorage.setItem("vainqueur", vainqueur);
-};
-
+}
 // Get the modal
 var modal = document.getElementById('modal');
 
@@ -99,7 +98,7 @@ function register(form) {
     // send a request
     xhttp.open("POST", "http://localhost/GreenWalk/API/users", true); // true : asynchronous request
     xhttp.send('{"nom":"' + lastname + '","prenom":"' + firstname + '","pseudo":"' + login + '","mail":"' + email + '","password":"' + pwd + '"}');
-};
+}
 
 // Log in
 function login() {
@@ -124,4 +123,4 @@ function login() {
     // send a request
     xhttp.open("POST", "http://localhost/GreenWalk/API/login", true); // true : asynchronous request
     xhttp.send('{"login":"' + login + '","password":"' + pwd + '"}');
-};
+}
