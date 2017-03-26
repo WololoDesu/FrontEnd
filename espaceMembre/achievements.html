@@ -1,35 +1,87 @@
 <!DOCTYPE html>
+<!--
+This is a starter template page. Use this page to start your new project from
+scratch. This page gets rid of all links and provides the needed markup only.
+-->
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Team statistics</title>
+    <title>AdminLTE 2 | My profile</title>
+    <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- Bootstrap 3.3.6 -->
     <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+    <!-- Ionicons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- Theme style -->
     <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+    <!-- Achievement style -->
+    <link rel="stylesheet" href="achievements.css">
+    <!-- AdminLTE Skins. We have chosen the skin-blue for this starter
+          page. However, you can choose any other skin. Make sure you
+          apply the skin class to the body tag so the changes take effect.
+    -->
     <link rel="stylesheet" href="dist/css/skins/skin-blue.min.css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
 </head>
+<!--
+BODY TAG OPTIONS:
+=================
+Apply one or more of the following classes to get the
+desired effect
+|---------------------------------------------------------|
+| SKINS         | skin-blue                               |
+|               | skin-black                              |
+|               | skin-purple                             |
+|               | skin-yellow                             |
+|               | skin-red                                |
+|               | skin-green                              |
+|---------------------------------------------------------|
+|LAYOUT OPTIONS | fixed                                   |
+|               | layout-boxed                            |
+|               | layout-top-nav                          |
+|               | sidebar-collapse                        |
+|               | sidebar-mini                            |
+|---------------------------------------------------------|
+-->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
+
+    <!-- Main Header -->
     <header class="main-header">
+
+        <!-- Logo -->
         <a href="index.html" class="logo">
+            <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini"><b>A</b>LT</span>
+            <!-- logo for regular state and mobile devices -->
             <span class="logo-lg"><img src="Images/logo.png"></span>
         </a>
+
+        <!-- Header Navbar -->
     </header>
     <!-- Left side column. contains the logo and sidebar -->
     <aside class="main-sidebar">
+
         <!-- sidebar: style can be found in sidebar.less -->
         <section class="sidebar">
+
             <!-- Sidebar user panel (optional) -->
             <div class="user-panel">
                 <div class="pull-left image">
                     <img id="imgUser" src="dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
                 </div>
                 <div class="pull-left info">
-                    <p id="nameUser">Alexander Pierce</p>
+                    <p id="nameUser">{TODO: Insert Name}</p>
                     <!-- Status -->
                     <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
                 </div>
@@ -43,21 +95,20 @@
                 <!-- Optionally, you can add icons to the links -->
                 <li><a href="index.html"><i class="fa fa-calendar"></i> <span>Timeline</span></a></li>
                 <li><a href="newParcour.html"><i class="fa fa-edit"></i> <span>New Parcour</span></a></li>
-                <li><a href="myProfile.html"><i class="fa fa-laptop"></i> <span>My profile</span></a></li>
-                <li class="active"><a href="teamStatistics.html"><i class="fa fa-pie-chart"></i>
-                    <span>Team Statistics</span></a></li>
-                <li class="treeview">
+                <li><a href="myProfile.html"><i class="fa fa-laptop"></i> <span>My profile</span></a>
+                </li>
+                <li><a href="teamStatistics.html"><i class="fa fa-pie-chart"></i> <span>Team Statistics</span></a></li>
+                <li class="treeview active">
                     <a href="#"><i class="fa fa-map-pin"></i> <span>Achivements</span>
                         <span class="pull-right-container">
-						  <i class="fa fa-angle-left pull-right"></i>
-						</span>
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="#"><i class="fa fa-circle-o"></i>My achivements</a></li>
                         <li><a href="#"><i class="fa fa-circle-o"></i>All achivements</a></li>
                     </ul>
                 </li>
-				<li><a id ='logout' href="#"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -66,45 +117,64 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <!-- Content Header (Page header) -->
-        <section class="content-header">
-            <h1>
-                Page Header
-                <small>Optional description</small>
-            </h1>
-            <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
-            </ol>
-        </section>
 
         <!-- Main content -->
         <section class="content">
-            <div class="box box-primary">
+
+
+            <!--lol-->
+            <div class="box box-primary" style="overflow:hidden">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Please choose your team to continue</h3>
+                    <h3 class="box-title"> Achievements </h3>
                 </div>
                 <!-- /.box-header -->
-                <!-- form start -->
-                <form role="form" onsubmit="return false">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="teams">Available teams</label>
-                            <select id="teams" class="btn btn-default">
-                                <option value="1">Hippo</option>
-                                <option value="2">Panda</option>
-                                <option value="3">Fox</option>
-                                <option value="4">Tiger</option>
-                            </select>
+               <!-- ------------------------------------------------------------------------ -->
+               <div class=""> 
+
+               <div class=""> 
+
+                   
+            <!-- Exemple -->
+            <!-- Bloqué -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="info-box bg-red">
+                        <span class="info-box-icon" style="overflow: hidden">
+                            <img src="Images/CrossSeal.png"/>
+                        </span>
+
+                        <div class="info-box-content">
+                          <span class="info-box-number">@Title</span>
+                          <span class="progress-description">@Description</span>
                         </div>
+                        <!-- /.info-box-content -->
+                      </div>
+                      <!-- /.info-box -->
+                    </div> 
+            <!-- Débloqué -->
+                    <div class="col-md-3 col-sm-6 col-xs-12">
+                      <div class="info-box bg-green">
+                        <span class="info-box-icon">
+                          <img src="Images/TickSeal.png"/>
+                        </span>
+
+                        <div class="info-box-content">
+                          <span class="info-box-number">@Title</span>
+                          <span class="progress-description">@Description</span>
+                        </div>
+                        <!-- /.info-box-content -->
+                      </div>
+                      <!-- /.info-box -->
                     </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary" id="chooseTeam">Submit</button>
-                    </div>
-                </form>
+            <!-- Fin exemple -->
+
+               </div></div>
+               <!-- ------------------------------------------------------------------------ -->
             </div>
+
+            <!-- Your Page Content Here -->
+
         </section>
+        <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
 
@@ -134,8 +204,10 @@
                     <li>
                         <a href="javascript:;">
                             <i class="menu-icon fa fa-birthday-cake bg-red"></i>
+
                             <div class="menu-info">
                                 <h4 class="control-sidebar-subheading">Langdon's Birthday</h4>
+
                                 <p>Will be 23 on April 24th</p>
                             </div>
                         </a>
@@ -153,6 +225,7 @@
                   <span class="label label-danger pull-right">70%</span>
                 </span>
                             </h4>
+
                             <div class="progress progress-xxs">
                                 <div class="progress-bar progress-bar-danger" style="width: 70%"></div>
                             </div>
@@ -170,6 +243,7 @@
             <div class="tab-pane" id="control-sidebar-settings-tab">
                 <form method="post">
                     <h3 class="control-sidebar-heading">General Settings</h3>
+
                     <div class="form-group">
                         <label class="control-sidebar-subheading">
                             Report panel usage
@@ -191,31 +265,10 @@
          immediately after the control sidebar -->
     <div class="control-sidebar-bg"></div>
 </div>
+
 <!-- ./wrapper -->
 
 <!-- REQUIRED JS SCRIPTS -->
-<script>
-    if (sessionStorage.getItem('teamUser') != null) {
-        window.location.replace("index.html");
-    }
-
-    var button = document.getElementById("chooseTeam");
-    button.onclick = chooseTeam();
-
-    function chooseTeam() {
-        var choice = document.getElementById("teams").value;
-        var idUser = sessionStorage.getItem("idUser");
-        sessionStorage.setItem('teamUser', choice);
-        var xhttp = new XMLHttpRequest();
-        xhttp.onreadystatechange = function () {
-            if (this.readyState == 4 && this.status == 200) {
-                window.location.replace("index.html");
-            }
-        };
-        xhttp.open("POST", "http://localhost/GreenWalk/API/users/" + idUser + "/teams", false); // true : asynchronous request
-        xhttp.send('{"idTeam":"' + choice + '"}');
-    }
-</script>
 <script src="testLogin.js"></script>
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
@@ -223,11 +276,10 @@
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-<script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="bootstrap/js/bootstrap.min.js"></script>
-<script src="plugins/chartjs/Chart.min.js"></script>
-<script src="plugins/fastclick/fastclick.js"></script>
-<script src="dist/js/app.min.js"></script>
-<script src="dist/js/demo.js"></script>
+
+<!-- Optionally, you can add Slimscroll and FastClick plugins.
+     Both of these plugins are recommended to enhance the
+     user experience. Slimscroll is required when using the
+     fixed layout. -->
 </body>
 </html>
