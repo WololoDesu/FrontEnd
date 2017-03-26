@@ -44,7 +44,6 @@ function testLogin() {
                 document.getElementById("imgUser").src = "../images/tigerwinner.png";
                 break;
         }
-		testTeam();
     } else {
         window.location.replace("../index.html");
     }
@@ -56,3 +55,4 @@ function logout(){
 }
 
 testLogin();
+testTeam();
