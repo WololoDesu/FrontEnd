@@ -1,5 +1,6 @@
 function testTeam() {
 	var team = sessionStorage.getItem('teamUser');
+	var CheminComplet = document.location.href;
 	if(team==null && CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 )!="chooseTeam.html"){
 		window.location.replace("chooseTeam.html");
 	}
