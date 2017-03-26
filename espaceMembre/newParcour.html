@@ -132,66 +132,37 @@
         <!-- /.box-header -->
         <div class="box-body">
           <div class="row">
-            <div class="col-md-6">
-              <div class="form-group">
-                <label>Select vehicule type</label>
-                <select id='vehiculeTypeD' class="form-control select2" style="width: 100%;">
-                  <option selected="selected">Walk</option>
-                  <option>Bike</option>
-                  <option>Non-motorised vehicule</option>
-                  <option>Bus</option>
-                  <option>Electric Car</option>
-                  <option>Car</option>
-                </select>
-              </div>
+			<div class="col-md-6">
+				<div class="form-group">
+					<label>Select vehicule type</label>
+					<select id='vehiculeTypeD' class="form-control select2" style="width: 100%;">
+					  <option selected="selected" value="6">Walk</option>
+					  <option value="4">Bike</option>
+					  <option value="5">Non-motorised vehicule</option>
+					  <option value="3">Bus</option>
+					  <option value="2">Electric Car</option>
+					  <option value="1">Car</option>
+					</select>
+				</div>
 
-              <div class="box-body">
-              <!-- Date disapeared-->
-              <!-- /.form group -->
+				<div class="box-body">
+				<!-- Date disapeared-->
+				<!-- /.form group -->
+				  <div class="form-group">
+				  <label>Distance :</label>
+					<input id='distanceD' type="text"> km
+				  </div>
 
-              <div class="form-group">
-              <label>Distance :</label>
-                <input type="text"> km
-              </div>
+				  <div class="form-group">
+				  <label>Time :</label>
+					<input id='tempsD' type="text"> min
+				  </div>
 
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <label>Beginning time :</label>
-
-                  <div class="input-group">
-                    <input id='beginningTimeD' type="text" class="form-control timepicker">
-
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-              </div>
-
-              <div class="bootstrap-timepicker">
-                <div class="form-group">
-                  <label>Arriving time :</label>
-
-                  <div class="input-group">
-                    <input id='arringTimeD' type="text" class="form-control timepicker">
-
-                    <div class="input-group-addon">
-                      <i class="fa fa-clock-o"></i>
-                    </div>
-                  </div>
-                  <!-- /.input group -->
-                </div>
-                <!-- /.form group -->
-              </div>
-
-
-             
+				  <div class="box-footer">
+					<button type="submit" class="btn btn-primary" onclick="addParcour()">Submit</button>
+				  </div>
+				</div>
             </div>
-             
-            </div>
-            
           </div>
           <!-- /.row -->
         </div>
@@ -407,6 +378,43 @@
 </div>
 <!-- ./wrapper -->
 
+<!--<script src="testLogin.js"></script>-->
+<script>
+function sendParcour(idUser, distance, temps, idTransport, co2Sauve){
+	var xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 201) {
+			window.location.replace("index.html");
+		}
+	};
+	// send a request
+	xhttp.open("POST", "http://localhost/GreenWalk/API/deplacement/", true); // true : asynchronous request
+	xhttp.send();
+}
+function addParcour(){
+	var idUser = sessionStorage.getItem('idUser');
+	var vType = document.getElementById("vehiculeTypeD").value;
+	var distance = document.getElementById("distanceD").value;
+	var temps = document.getElementById("tempsD").value;
+	if(vType!='' && distance!='' && temps!=''){
+	    var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function () {
+			if (this.readyState == 4 && this.status == 200) {
+				// transform JSON to javascript array
+				var response = JSON.parse(this.responseText);
+				if (response.status == "FOUND") {
+					var co2Sauve = distance * parseInt(reponse.data.tauxSave);
+					alert(co2Sauve);
+					sendParcour(idUser, distance, temps, vType, co2Sauve);
+				}
+			}
+		};
+		// send a request
+		xhttp.open("GET", "http://localhost/GreenWalk/API/transports/" + vType, true); // true : asynchronous request
+		xhttp.send();
+	}
+}
+</script>
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
@@ -436,8 +444,6 @@
 <script src="dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="dist/js/demo.js"></script>
-
-<script src="testLogin.js"></script>
 <!-- Page script -->
 <script>
   $(function () {
