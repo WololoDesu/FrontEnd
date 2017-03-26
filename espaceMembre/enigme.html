@@ -134,7 +134,7 @@ desired effect
 
             <!-- Your Page Content Here -->
 
-            <img src="../enigme.png" style = "position :relative; margin-left: 25%;margin-right: 50px;"/>
+            <img src="../images/enigme.png" style = "position :relative; margin-left: 25%;margin-right: 50px;"/>
 
         </section>
         <!-- /.content -->
@@ -242,49 +242,6 @@ desired effect
 <script src="bootstrap/js/bootstrap.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/app.min.js"></script>
-
-<script>
-    var user = sessionStorage.getItem('idUser');
-    var xhttp = new XMLHttpRequest();
-    //prepare the recieve
-    xhttp.onreadystatechange = function () {
-        if (this.readyState == 4 && this.status == 200) {
-            var response = JSON.parse(this.responseText);
-            alert(response);
-            for (var i in response) {
-//                var newLi = document.createElement("li");
-//                var newI = document.createElement("i");
-//                var timelineItem = document.createElement("div");
-//                var spanTime = document.createElement("span");
-//                var timeI = document.createElement("i");
-//                var h3 = document.createElement("h3");
-//                var bodyDiv = document.createElement("div");
-
-//                newI.classList.add("fa fa-paw bg-blue");
-//                timelineItem.classList.add("timeline-item");
-//                spanTime.classList.add("time");
-//                timeI.classList.add("fa fa-clock-o");
-//                h3.classList.add("timeline-header");
-//                bodyDiv.classList.add('timeline-body');
-
-//                bodyDiv.createTextNode("The {Insert Date}");
-//                h3.createTextNode("Deplacement saved");
-//                spanTime.appendChild(timeI);
-//                timelineItem.appendChild(bodyDiv);
-//                timelineItem.appendChild(h3);
-//                timelineItem.appendChild(spanTime);
-//                newLi.appendChild(timelineItem);
-//                newLi.appendChild(newI);
-//                var test = document.getElementById("test");
-//                test.appendChild(newLi);
-                alert("lol");
-            }
-        }
-    };
-    // send a request
-    xhttp.open("GET", "http://localhost/GreenWalk/API/deplacement/" + user, true); // true : asynchronous request
-    xhttp.send();
-</script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. Slimscroll is required when using the

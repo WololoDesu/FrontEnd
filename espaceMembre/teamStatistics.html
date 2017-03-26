@@ -71,8 +71,8 @@
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
-                Page Header
-                <small>Optional description</small>
+                Team statistics
+                <small>Is your team the best?</small>
             </h1>
             <ol class="breadcrumb">
                 <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
@@ -89,7 +89,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Team achievements</span>
-                            <span class="info-box-number">93,139</span>
+                            <span id="achievementA" class="info-box-number">0</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -103,7 +103,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Team distance travel</span>
-                            <span class="info-box-number">410 km</span>
+                            <span id="distanceA" class="info-box-number">0 km</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -116,7 +116,7 @@
 
                         <div class="info-box-content">
                             <span class="info-box-text">Team time</span>
-                            <span class="info-box-number">13,648 min</span>
+                            <span id="timeA" class="info-box-number">0 min</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -329,6 +329,34 @@
         xhttp.open("GET", "http://localhost/GreenWalk/API/teams/", true); // true : asynchronous request
         xhttp.send();
     });
+    function loadStats() {
+        var idUser = sessionStorage.getItem('idUser');
+        var achievementA = document.getElementById('achievementA');
+        var distanceA = document.getElementById("distanceA");
+        var timeA = document.getElementById("timeA");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // transform JSON to javascript array
+                var response = JSON.parse(this.responseText);
+                var achievement = 0;
+                var distance = 0;
+                var time = 0;
+                for (var i in response) {
+                    distance += parseInt(response[i].distance);
+                    time += parseInt(response[i].temps);
+                }
+                achievementA.innerHTML = achievement;
+                distanceA.innerHTML = distance + ' km';
+                timeA.innerHTML = time + ' min';
+            }
+        };
+        // send a request
+        xhttp.open("GET", "http://localhost/GreenWalk/API/deplacement/" + idUser, true); // true : asynchronous request
+        xhttp.send();
+    }
+
+    loadStats();
 </script>
 </body>
 </html>

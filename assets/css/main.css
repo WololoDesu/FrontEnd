@@ -3022,17 +3022,17 @@
 			right: 0;
 		}
 
-		.spotlight.style1 .content {
+		/**.spotlight.style1 .content {
 			border-color: #65b57a;
-		}
+		}*/
 
-		.spotlight.style2 .content {
+		/**.spotlight.style2 .content {
 			border-color: #5480f1;
-		}
+		}*/
 
-		.spotlight.style3 .content {
-			border-color: #de8787;
-		}
+		/**.spotlight.style3 .content {
+			border-color: #ffeeaa;
+		}*/
 
 		.spotlight.inactive .content {
 			opacity: 0;
