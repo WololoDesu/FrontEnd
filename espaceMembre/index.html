@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Starter</title>
+    <title>Green Walk</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -297,12 +297,13 @@ desired effect
                 var tmp = response[i].temps;
                 var vehi = getVehicule(response[i].idTransport);
                 var dist = response[i].distance;
+                var gram = response[i].co2Sauve;
                 var newLi = document.createElement("li");
                 newLi.innerHTML = '<i class="fa fa-paw bg-blue"></i>' +
                     '<div class="timeline-item">' +
                     '<span class="time"><i class="fa fa-clock-o"></i> ' + tmp + ' min</span>' +
                     '<h3 class="timeline-header">'+date.toDateString()+'</h3>' +
-                    '<div class="timeline-body">' + dist + ' km in ' + vehi + '.</div></div>';
+                    '<div class="timeline-body">' + dist + ' km in ' + vehi + '. Economisated '+ gram +' g of CO2</div></div>';
                 document.getElementById("test").insertBefore(newLi, oldLi);
                 oldLi = newLi;
             }
