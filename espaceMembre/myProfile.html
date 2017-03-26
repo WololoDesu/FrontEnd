@@ -7,7 +7,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | My profile</title>
+    <title>GreenWalk | My profile</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.6 -->
@@ -141,7 +141,7 @@ desired effect
 
                         <div class="info-box-content">
                             <span class="info-box-text">Achievements</span>
-                            <span class="info-box-number">93,139</span>
+                            <span id="achievementA" class="info-box-number">0</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -155,7 +155,7 @@ desired effect
 
                         <div class="info-box-content">
                             <span class="info-box-text">Distance travel</span>
-                            <span class="info-box-number">410 km</span>
+                            <span id="distanceA" class="info-box-number">0 km</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -168,7 +168,7 @@ desired effect
 
                         <div class="info-box-content">
                             <span class="info-box-text">Time</span>
-                            <span class="info-box-number">13,648 min</span>
+                            <span id="timeA" class="info-box-number">0 min</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -181,7 +181,7 @@ desired effect
 
                         <div class="info-box-content">
                             <span class="info-box-text">Taux Co2 sauvé</span>
-                            <span class="info-box-number">10000 g</span>
+                            <span id="co2A" class="info-box-number">0 g</span>
                         </div>
                         <!-- /.info-box-content -->
                     </div>
@@ -189,31 +189,6 @@ desired effect
                 </div>
                 <!-- /.col -->
             </div>
-
-            <div class ="listeTrajet">
-	            <div class="col-md-3">
-		          <div class="box box-success box-solid">
-		            <div class="box-header with-border">
-		              <h3 class="box-title">Trajet</h3>
-
-		              <div class="box-tools pull-right">
-		                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-		                </button>
-		              </div>
-		              <!-- /.box-tools -->
-		            </div>
-		            <!-- /.box-header -->
-		            <div class="box-body" style="display: block;">
-		              <ul>
-		              	<li>Marche 1km</li>
-		              	<li>Vélo 2 km</li>
-		              </ul>
-		            </div>
-		            <!-- /.box-body -->
-		          </div>
-		          <!-- /.box -->
-		        </div>
-		    </div>
 
             <!-- Your Page Content Here -->
 
@@ -314,6 +289,40 @@ desired effect
 
 <!-- REQUIRED JS SCRIPTS -->
 <script src="testLogin.js"></script>
+<script>
+function loadStats(){
+	var idUser = sessionStorage.getItem('idUser');
+	var achievementA = document.getElementById('achievementA');
+	var distanceA = document.getElementById("distanceA").value;
+	var timeA = document.getElementById("timeA").value;
+	var co2A = document.getElementById("co2A").value;
+	   var xhttp = new XMLHttpRequest();
+		http.onreadystatechange = function () {
+		if (this.readyState == 4 && this.status == 200) {
+			// transform JSON to javascript array
+			var response = JSON.parse(this.responseText);
+			var achievement = 0;
+			var distance = 0;
+			var time = 0;
+			var co2 = 0;
+			for(var i in response){
+				distance += parseInt(response[i].distance);
+				time += parseInt(response[i].temps);
+				co2 += parseInt(response[i].co2Sauve);
+			}
+			achievementA.innerHTML = achievement;
+			distanceA.innerHTML = distance;
+			timeA.innerHTML = time;
+			co2A.innerHTML = co2;
+		}
+	};
+	// send a request
+	xhttp.open("GET", "http://localhost/GreenWalk/API/deplacement/" + idUser, true); // true : asynchronous request
+	xhttp.send();
+}
+
+loadStats();
+</script>
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
 <!-- Bootstrap 3.3.6 -->
