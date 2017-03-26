@@ -107,8 +107,8 @@ desired effect
                         <li><a href="#"><i class="fa fa-circle-o"></i>All achivements</a></li>
                     </ul>
                 </li>
-		<li><a id ='enigme' href="enigme.html"><i class="fa fa-key"></i> <span>Riddle</span></a></li>
-		<li><a id ='logout' href="#"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
+                <li><a id='enigme' href="enigme.html"><i class="fa fa-key"></i> <span>Riddle</span></a></li>
+                <li><a id='logout' href="#"><i class="fa fa-power-off"></i> <span>Logout</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>
@@ -290,38 +290,38 @@ desired effect
 <!-- REQUIRED JS SCRIPTS -->
 <script src="testLogin.js"></script>
 <script>
-function loadStats(){
-	var idUser = sessionStorage.getItem('idUser');
-	var achievementA = document.getElementById('achievementA');
-	var distanceA = document.getElementById("distanceA").value;
-	var timeA = document.getElementById("timeA").value;
-	var co2A = document.getElementById("co2A").value;
-	   var xhttp = new XMLHttpRequest();
-		http.onreadystatechange = function () {
-		if (this.readyState == 4 && this.status == 200) {
-			// transform JSON to javascript array
-			var response = JSON.parse(this.responseText);
-			var achievement = 0;
-			var distance = 0;
-			var time = 0;
-			var co2 = 0;
-			for(var i in response){
-				distance += parseInt(response[i].distance);
-				time += parseInt(response[i].temps);
-				co2 += parseInt(response[i].co2Sauve);
-			}
-			achievementA.innerHTML = achievement;
-			distanceA.innerHTML = distance;
-			timeA.innerHTML = time;
-			co2A.innerHTML = co2;
-		}
-	};
-	// send a request
-	xhttp.open("GET", "http://localhost/GreenWalk/API/deplacement/" + idUser, true); // true : asynchronous request
-	xhttp.send();
-}
+    function loadStats() {
+        var idUser = sessionStorage.getItem('idUser');
+        var achievementA = document.getElementById('achievementA');
+        var distanceA = document.getElementById("distanceA");
+        var timeA = document.getElementById("timeA");
+        var co2A = document.getElementById("co2A");
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                // transform JSON to javascript array
+                var response = JSON.parse(this.responseText);
+                var achievement = 0;
+                var distance = 0;
+                var time = 0;
+                var co2 = 0;
+                for (var i in response) {
+                    distance += parseInt(response[i].distance);
+                    time += parseInt(response[i].temps);
+                    co2 += parseInt(response[i].co2Sauve);
+                }
+                achievementA.innerHTML = achievement;
+                distanceA.innerHTML = distance + ' km';
+                timeA.innerHTML = time + ' min';
+                co2A.innerHTML = co2 + ' g';
+            }
+        };
+        // send a request
+        xhttp.open("GET", "http://localhost/GreenWalk/API/deplacement/" + idUser, true); // true : asynchronous request
+        xhttp.send();
+    }
 
-loadStats();
+    loadStats();
 </script>
 <!-- jQuery 2.2.3 -->
 <script src="plugins/jQuery/jquery-2.2.3.min.js"></script>
