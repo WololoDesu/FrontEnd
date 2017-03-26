@@ -92,7 +92,7 @@ function register(form){
 				}
 			}else{
 				sessionStorage.setItem('idUser', response[0].id);
-				window.location.replace("starter.html");
+				window.location.replace("espaceMembre/starter.html");
 			}
 		}
     };
@@ -117,7 +117,7 @@ function login(){
 				message.innerHTML = response[0].reason;
 			}else{
 				sessionStorage.setItem('idUser', response[0].id);
-				window.location.replace("starter.html");
+				window.location.replace("espaceMembre/starter.html");
 			}
 		}
     };
