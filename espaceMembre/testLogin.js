@@ -1,6 +1,6 @@
 function testTeam() {
 	var team = sessionStorage.getItem('teamUser');
-	if(team==null){
+	if(team==null && CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 )!="chooseTeam.html"){
 		window.location.replace("chooseTeam.html");
 	}
 }
@@ -46,6 +46,11 @@ function testLogin() {
     } else {
         window.location.replace("../index.html");
     }
+}
+
+function logout(){
+	sessionStorage.clear();
+	window.location.replace("../index.html");
 }
 
 testLogin();
