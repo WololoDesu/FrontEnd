@@ -100,7 +100,7 @@
                     </div>
                     <!-- /.box-body -->
                     <div class="box-footer">
-                        <button type="submit" class="btn btn-primary" onclick="chooseTeam()">Submit</button>
+                        <button type="submit" class="btn btn-primary" id="chooseTeam">Submit</button>
                     </div>
                 </form>
             </div>
@@ -198,6 +198,10 @@
     if (sessionStorage.getItem('teamUser') != null) {
         window.location.replace("index.html");
     }
+
+    var button = document.getElementById("chooseTeam");
+    button.onclick = chooseTeam();
+
     function chooseTeam() {
         var choice = document.getElementById("teams").value;
         var idUser = sessionStorage.getItem("idUser");

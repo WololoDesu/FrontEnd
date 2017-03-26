@@ -141,24 +141,11 @@ desired effect
                 </li>
                 <!-- /.timeline-label -->
 
-                <!--&lt;!&ndash; timeline item &ndash;&gt;-->
-                <!--<li>-->
-                <!--<i class="fa fa-paw bg-blue"></i>-->
-
-                <!--<div class="timeline-item">-->
-                <!--<span class="time"><i class="fa fa-clock-o"></i> 25 min</span>-->
-
-                <!--<h3 class="timeline-header"><a href="#">Deplacement saved</a></h3>-->
-
-                <!--<div class="timeline-body">-->
-                <!--The {Insert Date}.-->
-                <!--</div>-->
-                <!--</div>-->
-                <!--</li>-->
-                <!--&lt;!&ndash; END timeline item &ndash;&gt;-->
+                <!-- timeline item -->
+                <!-- END timeline item -->
 
                 <!-- timeline time label -->
-                <li class="time-label">
+                <li id="start" class="time-label">
                   <span id="dateStart" class="bg-green">
                     3 Jan. 2014
                   </span>
@@ -278,46 +265,67 @@ desired effect
 <script src="dist/js/app.min.js"></script>
 
 <script>
-    var user = sessionStorage.getItem('idUser');
-    var xhttp = new XMLHttpRequest();
     //prepare the recieve
+    var user = sessionStorage.getItem('idUser');
+    var dateEnd = document.getElementById("dateEnd");
+    var date = new Date();
+    dateEnd.innerHTML = date.toDateString();
+
+    //Get user creation date
+    var xhttp2 = new XMLHttpRequest();
+    xhttp2.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText);
+            var dateStart = document.getElementById("dateStart");
+
+            var date = new Date(response.data.creationDate);
+
+            dateStart.innerHTML = date.toDateString();
+        }
+    };
+
+    xhttp2.open("GET", "http://localhost/GreenWalk/API/users/" + user, true); // true : asynchronous request
+    xhttp2.send();
+
+    var xhttp = new XMLHttpRequest();
+    var oldLi = document.getElementById("start");
     xhttp.onreadystatechange = function () {
         if (this.readyState == 4 && this.status == 200) {
             var response = JSON.parse(this.responseText);
-            alert(response);
             for (var i in response) {
-//                var newLi = document.createElement("li");
-//                var newI = document.createElement("i");
-//                var timelineItem = document.createElement("div");
-//                var spanTime = document.createElement("span");
-//                var timeI = document.createElement("i");
-//                var h3 = document.createElement("h3");
-//                var bodyDiv = document.createElement("div");
-
-//                newI.classList.add("fa fa-paw bg-blue");
-//                timelineItem.classList.add("timeline-item");
-//                spanTime.classList.add("time");
-//                timeI.classList.add("fa fa-clock-o");
-//                h3.classList.add("timeline-header");
-//                bodyDiv.classList.add('timeline-body');
-
-//                bodyDiv.createTextNode("The {Insert Date}");
-//                h3.createTextNode("Deplacement saved");
-//                spanTime.appendChild(timeI);
-//                timelineItem.appendChild(bodyDiv);
-//                timelineItem.appendChild(h3);
-//                timelineItem.appendChild(spanTime);
-//                newLi.appendChild(timelineItem);
-//                newLi.appendChild(newI);
-//                var test = document.getElementById("test");
-//                test.appendChild(newLi);
-                alert("lol");
+                var date = new Date(response[i].deplacementDate);
+                var tmp = response[i].temps;
+                var vehi = getVehicule(response[i].idTransport);
+                var dist = response[i].distance;
+                var newLi = document.createElement("li");
+                newLi.innerHTML = '<i class="fa fa-paw bg-blue"></i>' +
+                    '<div class="timeline-item">' +
+                    '<span class="time"><i class="fa fa-clock-o"></i> ' + tmp + ' min</span>' +
+                    '<h3 class="timeline-header">'+date.toDateString()+'</h3>' +
+                    '<div class="timeline-body">' + dist + ' km in ' + vehi + '.</div></div>';
+                document.getElementById("test").insertBefore(newLi, oldLi);
+                oldLi = newLi;
             }
         }
     };
     // send a request
     xhttp.open("GET", "http://localhost/GreenWalk/API/deplacement/" + user, true); // true : asynchronous request
     xhttp.send();
+
+    function getVehicule(id) {
+        var xhttp = new XMLHttpRequest();
+        var vehiculeName = null;
+        xhttp.onreadystatechange = function () {
+            if (this.readyState == 4 && this.status == 200) {
+                var response = JSON.parse(this.responseText);
+                vehiculeName = response.data.nom;
+            }
+        };
+        // send a request
+        xhttp.open("GET", "http://localhost/GreenWalk/API/transports/" + id, false); // true : asynchronous request
+        xhttp.send();
+        return vehiculeName;
+    }
 </script>
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
