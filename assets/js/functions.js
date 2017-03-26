@@ -40,7 +40,7 @@ loadTheme();
 // Change the winner
 function setWinner(vainqueur) { // A redéfinir
     localStorage.setItem("vainqueur", vainqueur);
-}
+};
 
 // Get the modal
 var modal = document.getElementById('modal');
@@ -55,13 +55,13 @@ var span = document.getElementById("closeModal");
 btn.onclick = function () {
     modal.style.display = "block";
     document.body.classList.add('stop-scrolling');
-}
+};
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function () {
     modal.style.display = "none";
     document.body.classList.remove('stop-scrolling');
-}
+};
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function (event) {
@@ -69,7 +69,7 @@ window.onclick = function (event) {
         modal.style.display = "none";
         document.body.classList.remove('stop-scrolling');
     }
-}
+};
 
 // Sign up
 function register(form) {
@@ -82,11 +82,9 @@ function register(form) {
     var xhttp = new XMLHttpRequest();
     // prepare the receive
     xhttp.onreadystatechange = function () {
-        alert(this.readyState + ' ' + this.status);
         if (this.readyState == 4 && this.status == 201) {
             // transform JSON to javascript array
             var response = JSON.parse(this.responseText);
-            alert(response.status);
             if (response.status == "ERROR") {
                 message.innerHTML += "Erreur : ";
                 for (var i in response.messages) {
@@ -101,7 +99,7 @@ function register(form) {
     // send a request
     xhttp.open("POST", "http://localhost/GreenWalk/API/users", true); // true : asynchronous request
     xhttp.send('{"nom":"' + lastname + '","prenom":"' + firstname + '","pseudo":"' + login + '","mail":"' + email + '","password":"' + pwd + '"}');
-}
+};
 
 // Log in
 function login() {
@@ -126,4 +124,4 @@ function login() {
     // send a request
     xhttp.open("POST", "http://localhost/GreenWalk/API/login", true); // true : asynchronous request
     xhttp.send('{"login":"' + login + '","password":"' + pwd + '"}');
-}
+};
