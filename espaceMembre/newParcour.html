@@ -402,8 +402,7 @@ function addParcour(){
 				// transform JSON to javascript array
 				var response = JSON.parse(this.responseText);
 				if (response.status == "FOUND") {
-					var co2Sauve = distance * parseInt(reponse.data.tauxSave);
-					alert(co2Sauve);
+					var co2Sauve = distance * parseInt(response.data.tauxSave);
 					sendParcour(idUser, distance, temps, vType, co2Sauve);
 				}
 			}
