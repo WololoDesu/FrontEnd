@@ -1,8 +1,8 @@
 function testTeam() {
 	var team = sessionStorage.getItem('teamUser');
-	var CheminComplet = document.location.href;
-	alert(CheminComplet.lastIndexOf( "/" )+1 ));
-	if(team==null && CheminComplet.substring(CheminComplet.lastIndexOf( "/" )+1 )!="chooseTeam.html"){
+	var CheminComplet = document.location.href.split("/");
+	var page = CheminComplet[CheminComplet.length - 1]
+	if(team==null && page!="chooseTeam.html"){
 		window.location.replace("chooseTeam.html");
 	}
 }
