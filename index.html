@@ -50,15 +50,15 @@
         <!-- Modal Content -->
         <form class="modal-content animate" action="" onsubmit="return false">
             <div id="modelForm" class="row uniform 50%">
+                <img src="./images/login.png" id="loginLogo" ><img>
                 <div class="8u 12u$(xsmall)"><input type="text" placeholder="Mail/Login" id="loginL" required></div>
                 <div class="8u 12u$(xsmall)"><input type="password" placeholder="Password" id="pwdL" required></div>
-                <div class="4u$ 12u$(xsmall)"><input type="submit" value="Login" class="fit special" onclick="login()">
+                <div class="4u$ 12u$(xsmall)"><input type="submit" value="Login" class="fit special" id="loginBtn" onclick="login()">
                 </div>
                 <label id="MsgModal"></label>
             </div>
         </form>
     </div>
-
     <!-- One -->
     <section id="one" class="spotlight style1 bottom">
         <span class="image fit main"><img id="bannerS1" src="images/foxbasic-banner.png" alt=""/></span>
@@ -69,18 +69,18 @@
                         <header>
                             <h2>Create an account !</h2>
                             <p>Take part to a challenge to produce less pollution, by travelling as often as possible
-                                without the car.</p>
+                                without polluting.</p>
                         </header>
                     </div>
                     <div class="4u 12u$(medium)">
-                        <p>This website will show you how many CO2 is removed from the atmosphere with your effort !
-                            Tape your shifting,
+                        <p>This website will show you how many CO2 is saved from the atmosphere with your effort !
+                            Register your parcours,
                             with the transport's mean, and you'll know instantly how many CO2 you didn't produced !</p>
                     </div>
                     <div class="4u$ 12u$(medium)">
-                        <p>The more you save CO2, the best score you have ! We have for ambition to favor the use of
+                        <p>The more C02 you save,better your score is ! We have the ambition to favor the use of
                             Non-mothorized
-                            vehicules, as bycicles, or walking.</p>
+                            vehicles, as bycicles, and walking.</p>
                     </div>
                 </div>
             </div>
@@ -94,13 +94,13 @@
         <div class="content">
             <header>
                 <h2>Join a team !</h2>
-                <p>Earn points to beat others team</p>
+                <p>Earn points to beat the other teams</p>
             </header>
-            <p>By joining a team you can take part of a little competition, to know who will spend the less CO2 as
+            <p>By joining a team you can take part to a little competition, to know who will spend the less CO2 as
                 possible.</p>
-            <p>Each month, all the members of a team can solve a riddle. To help you solving this riddle, every week an
+            <p>Each month, all members of a team will have to solve a riddle. To help you solving this riddle, every week an
                 intel
-                will be given to the team who marked the most points.</p>
+                will be given to the team who marked the maximum points.</p>
         </div>
         <a href="#three" class="goto-next scrolly">Next</a>
     </section>
@@ -113,7 +113,7 @@
                 <h2>Get achievements !</h2>
                 <p>The more you do, the better achievements you get.</p>
             </header>
-            <p>A system of achievement will show how much you're implicated in this adventure.</p>
+            <p>A system of achievement will show you how much you're implicated in this adventure.</p>
         </div>
         <a href="#four" class="goto-next scrolly">Next</a>
     </section>
@@ -123,7 +123,7 @@
         <div class="container">
             <header>
                 <h2>Start your adventure now !</h2>
-                <p>Just fill the following inputs to sign up.</p>
+                <p>Just fill the following fields to sign up.</p>
             </header>
             <form method="post" action="#" class="container 50%" onsubmit="return false">
                 <div class="row uniform 50%">
@@ -164,6 +164,9 @@
         window.location.replace("espaceMembre/index.html");
     }
 </script>
+<script src="assets/js/cheet.min.js"></script>
+<script src="assets/js/cheet.js"></script>
+<script src="assets/js/chiisai.js"></script>
 <script src="assets/js/sha256.min.js"></script>
 <script src="assets/js/functions.js"></script>
 <script src="assets/js/jquery.min.js"></script>
