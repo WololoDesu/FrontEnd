@@ -1,10 +1,10 @@
 function testTeam() {
-	var team = sessionStorage.getItem('teamUser');
-	var CheminComplet = document.location.href.split("/");
-	var page = CheminComplet[CheminComplet.length - 1]
-	if(team==null && page!="chooseTeam.html"){
-		window.location.replace("chooseTeam.html");
-	}
+    var team = sessionStorage.getItem('teamUser');
+    var CheminComplet = document.location.href.split("/");
+    var page = CheminComplet[CheminComplet.length - 1];
+    if (team == 'null' && page!="chooseTeam.html") {
+        window.location.replace("chooseTeam.html");
+    }
 }
 
 function testLogin() {
@@ -44,15 +44,15 @@ function testLogin() {
                 document.getElementById("imgUser").src = "../images/tigerwinner.png";
                 break;
         }
-		testTeam();
+        testTeam();
     } else {
         window.location.replace("../index.html");
     }
 }
 
-function logout(){
-	sessionStorage.clear();
-	window.location.replace("../index.html");
+function logout() {
+    sessionStorage.clear();
+    window.location.replace("../index.html");
 }
 
 testLogin();
