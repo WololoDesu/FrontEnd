@@ -8,7 +8,7 @@ function testLogin(){
 		var nameUser = sessionStorage.getItem('nameUser');
 		var score = sessionStorage.getItem('scoreUser');
 		var team = sessionStorage.getItem('teamUser');
-		if(nameuser==null || score==null || team==null){
+		if(nameUser==null || score==null || team==null){
 			var xhttp = new XMLHttpRequest();
 			xhttp.onreadystatechange = function(){
 				if(this.readyState==4 && this.status==200){
@@ -16,7 +16,7 @@ function testLogin(){
 					nameuser = response[0].data.prenom + response[0].data.nom;
 					score = response[0].data.score;
 					team = response[0].data.team;
-					sessionStorage.setItem('nameUser', nameuser);
+					sessionStorage.setItem('nameUser', nameUser);
 					sessionStorage.setItem('scoreUser', score);
 					sessionStorage.setItem('teamUser', team);
 				}
@@ -24,7 +24,7 @@ function testLogin(){
 			xhttp.open("GET", "http://localhost/GreenWalk/API/users/" + user, false); // true : asynchronous request
 			xhttp.send();
 		}
-		document.getElementById("nameUser").innerHTML = nameuser;
+		document.getElementById("nameUser").innerHTML = nameUser;
 		switch(team){
 			case 1 :
 				document.getElementById("imgUser").src = "../images/hippowinner.png";
